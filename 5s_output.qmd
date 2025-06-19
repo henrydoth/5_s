@@ -31,6 +31,9 @@ source(here::here("R", "01_load_data.R"))
 source(here::here("R", "so_lan_thuc_hien_ve_sinh_24_h.R"))
 source(here::here("R", "dieu_kien_chung.R"))
 source(here::here("R", "khia_canh_san_nha_ve_sinh.R"))
+source(here::here("R", "khia_canh_thiet_bi_ve_sinh.R"))
+source(here::here("R", "khia_canh_vat_dung_trong_nha_ve_sinh.R"))
+
 ```
 
 
@@ -111,6 +114,30 @@ Nhiều mô hình nghiên cứu hành vi người dùng nhà vệ sinh cũng cho
 
 
 
+# CHƯƠNG 2  
+## ĐỐI TƯỢNG VÀ PHƯƠNG PHÁP NGHIÊN CỨU
+
+### Thiết kế nghiên cứu  
+Đây là một nghiên cứu **mô tả cắt ngang**, được thực hiện nhằm khảo sát thực trạng và đánh giá mức độ đạt chuẩn của các điều kiện vệ sinh tại nhà vệ sinh trong khuôn viên Bệnh viện 30-4.
+
+###  Địa điểm và thời gian nghiên cứu  
+- **Địa điểm**: Bệnh viện 30-4, TP. Hồ Chí Minh  
+- **Thời gian**: Từ tháng … đến tháng … năm 2025
+
+### Đối tượng nghiên cứu  
+- Các **nhà vệ sinh** đang sử dụng tại các khoa phòng, khu hành chính và khu khám bệnh của Bệnh viện 30-4.  
+- **Đơn vị khảo sát** là **mỗi phòng vệ sinh**.
+
+### Tiêu chí chọn mẫu  
+- Bao gồm toàn bộ nhà vệ sinh đang hoạt động trong thời gian khảo sát tại bệnh viện.  
+- Không bao gồm các nhà vệ sinh đang sửa chữa hoặc ngưng sử dụng tại thời điểm khảo sát.
+
+### Cỡ mẫu và phương pháp chọn mẫu  
+- **Phương pháp chọn mẫu**: chọn mẫu toàn bộ (toàn bộ các nhà vệ sinh hợp lệ được khảo sát).  
+- **C**
+
+
+
 
 # KẾT QUẢ NGHIÊN CỨU
 ## So sánh số lần vệ sinh trong 24 giờ giữa nhà vệ sinh Nhân viên và Khách hàng
@@ -179,8 +206,6 @@ plot_dk_chung
 tbl_san_nvs
 ```
 
-
-
 ### Biểu đồ
 ```{r}
 #| echo: false
@@ -191,6 +216,56 @@ plot_san_nvs
 ```
 
 ##### `r nhan_xet_san_nvs`
+
+
+
+
+## Khía cạnh thiết bị vệ sinh
+
+### Bảng
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| paged-print: false
+#| 
+tbl_tbvs
+```
+
+### Biểu đồ
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| paged-print: false
+plot_tbvs
+```
+
+##### `r nhan_xet_tbvs`
+
+
+## Khía cạnh vật dụng trong nhà vệ sinh
+
+### Bảng
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| paged-print: false
+#| 
+tbl_vat_dung
+```
+
+### Biểu đồ
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| paged-print: false
+plot_vat_dung
+```
+
+##### `r nhan_xet_vat_dung`
 
 
 
@@ -225,6 +300,51 @@ Một số vấn đề phổ biến khác như mùi hôi, thiếu thông gió, h
 Kết quả này phù hợp với các nghiên cứu trước đây cho thấy tại các bệnh viện có thời gian hoạt động lâu năm, công tác quản lý vệ sinh thường gặp nhiều thách thức hơn so với các bệnh viện mới xây hoặc đã được cải tạo tổng thể gần đây [@truong2020hygiene]. Điều này đòi hỏi không chỉ cải thiện về hạ tầng mà còn cần một chiến lược quản lý tổng thể, có kế hoạch sửa chữa đồng bộ và đào tạo nhân viên định kỳ.
 
 Tóm lại, tình trạng nhà vệ sinh tại Bệnh viện 30-4 hiện nay phản ánh những bất cập hạ tầng điển hình của các cơ sở y tế cũ, đòi hỏi giải pháp toàn diện về kỹ thuật, tổ chức và tài chính để cải thiện môi trường chăm sóc sức khỏe, đảm bảo an toàn và sự hài lòng của người bệnh và nhân viên y tế.
+
+### Bàn luậnvề khía cạnh nhà vệ sinh
+Khía cạnh sàn nhà vệ sinh là một trong những tiêu chí quan trọng phản ánh mức độ sạch sẽ, an toàn và thuận tiện cho người sử dụng – đặc biệt trong môi trường bệnh viện, nơi yêu cầu cao về kiểm soát nhiễm khuẩn và đảm bảo an toàn cho bệnh nhân, người chăm sóc và nhân viên y tế. Qua bảng kết quả và biểu đồ phân tích tỷ lệ đánh giá "Có" ở các tiêu chí thuộc phần sàn nhà vệ sinh tại Bệnh viện 30-4, có thể nhận thấy chất lượng nền sàn hiện nay vẫn chưa đạt kỳ vọng.
+
+Cụ thể, tiêu chí “Khô ráo, không đọng nước” đạt tỷ lệ “Có” cao nhất là 61,2%, cho thấy phần lớn các khu vệ sinh không bị ngập nước hay ẩm ướt – đây là tín hiệu tích cực vì nền ướt không chỉ gây bất tiện mà còn dễ dẫn đến té ngã và phát sinh mùi hôi. Tuy nhiên, gần 40% mẫu khảo sát vẫn cho biết có hiện tượng nền không khô ráo, đặt ra yêu cầu cần cải thiện thoát nước và tần suất lau chùi.
+
+Một vấn đề đáng quan tâm khác là trơn trượt và sạch sẽ, đều chỉ đạt tỷ lệ "Có" là 35,1% – nghĩa là gần 2/3 mẫu khảo sát nhận định sàn nhà vệ sinh trơn trượt hoặc có vết bẩn. Đây là các nguy cơ cao đối với an toàn người bệnh, đặc biệt là người cao tuổi hoặc người khuyết tật. Đáng chú ý, tiêu chí “Rác rơi vãi” có tỷ lệ “Không” lên đến 70,7%, tức là chỉ khoảng 29,3% khu vực sàn được ghi nhận là không có rác – cho thấy tình trạng vệ sinh không được kiểm soát thường xuyên hoặc thiếu nhân lực dọn dẹp.
+
+Một yếu tố cấu trúc nền sàn – “Bong tróc, nứt vỡ” – cũng có kết quả chưa khả quan, khi tỷ lệ “Có” chỉ đạt 46,8%, tức hơn một nửa các khu vệ sinh có nền sàn bong tróc hoặc nứt vỡ, tiềm ẩn nguy cơ gây thương tích, đồng thời làm giảm hiệu quả vệ sinh do khó lau chùi sạch sẽ. Thực tế này phản ánh ảnh hưởng từ tình trạng hạ tầng cũ kỹ tại Bệnh viện 30-4, nơi có nhiều khối nhà xây dựng từ lâu và chỉ được duy tu nhỏ lẻ trong thời gian qua.
+
+Kết quả khảo sát khía cạnh sàn nhà vệ sinh tại bệnh viện 30-4 phù hợp với các nghiên cứu trước đây tại các bệnh viện công lập lâu năm, nơi điều kiện vệ sinh còn hạn chế do cơ sở hạ tầng xuống cấp và thiếu kế hoạch cải tạo tổng thể [@truong2020hygiene].
+
+Do đó, cần có giải pháp cải thiện đồng bộ, bao gồm: (1) nâng cấp lớp phủ nền chống trơn trượt, (2) cải thiện hệ thống thoát nước, (3) tăng cường tần suất dọn dẹp, và (4) lên kế hoạch bảo trì, nâng nền, xử lý triệt để các vị trí bong tróc. Ngoài ra, cần bổ sung quy trình checklist vệ sinh định kỳ cho nhân viên phụ trách, nhằm giám sát và nâng cao trách nhiệm trong việc giữ gìn vệ sinh sàn nhà vệ sinh.
+
+Tóm lại, khía cạnh sàn nhà vệ sinh là khu vực cần ưu tiên cải thiện, không chỉ để đảm bảo an toàn mà còn nâng cao chất lượng dịch vụ tổng thể và sự hài lòng của người sử dụng.
+
+
+### Bàn luận về khía cạnh thiết bị vệ sinh
+Kết quả khảo sát tại Bệnh viện 30-4 cho thấy chất lượng thiết bị vệ sinh trong nhà vệ sinh bệnh viện còn nhiều hạn chế cần cải thiện. Trong số 4 tiêu chí được đánh giá, tỷ lệ đạt chuẩn ("Có") cao nhất thuộc về tiêu chí “Hỏng, tắc nghẽn”, với 49,5% số khu vệ sinh không có tình trạng hỏng hóc, tắc nghẽn. Tuy nhiên, điều này đồng nghĩa với việc vẫn còn đến 50,5% khu vực có thiết bị vệ sinh hỏng hoặc tắc, cho thấy sự cần thiết của việc bảo trì thường xuyên và phát hiện sớm hư hỏng để xử lý kịp thời.
+
+Tiêu chí “Nứt vỡ” đạt tỷ lệ “Có” là 31,4%, tức chỉ gần 1/3 số khu vệ sinh được ghi nhận không có hiện tượng nứt vỡ thiết bị. Điều này phản ánh hiện trạng xuống cấp của hệ thống vệ sinh – vấn đề phổ biến tại các bệnh viện công có cơ sở vật chất cũ kỹ như Bệnh viện 30-4, vốn đã xây dựng từ lâu và nhiều lần sửa chữa nhỏ nhưng chưa được cải tạo toàn diện.
+
+Tiêu chí đáng quan ngại nhất là “Vòi rửa tay tự động ngắt nước”, khi chỉ 6,9% khu vệ sinh có trang bị và hoạt động tốt thiết bị này. Việc thiếu thiết bị vệ sinh thông minh như vòi tự động không chỉ ảnh hưởng đến trải nghiệm người dùng mà còn làm giảm hiệu quả kiểm soát lây nhiễm chéo trong môi trường y tế. Việc đầu tư các thiết bị cảm ứng không tiếp xúc là xu hướng tất yếu, đặc biệt sau đại dịch COVID-19 [@who2022infectioncontrol].
+
+Ngoài ra, có đến 72,9% khu vệ sinh được ghi nhận có tình trạng bồn cầu dính đọng phân hoặc nước tiểu, chỉ 27,1% đạt tiêu chí sạch sẽ – một kết quả đáng lo ngại đối với hình ảnh bệnh viện. Vệ sinh không đảm bảo không chỉ ảnh hưởng đến sự hài lòng của người bệnh và người nhà, mà còn có thể làm tăng nguy cơ lây nhiễm các bệnh đường tiêu hóa hoặc da liễu [@stevens2011infection].
+
+Một số nghiên cứu quốc tế cũng cho thấy sự liên quan rõ rệt giữa môi trường vệ sinh bệnh viện và mức độ hài lòng của người bệnh. Theo nghiên cứu của Dancer và cộng sự, chất lượng vệ sinh bệnh viện có liên hệ chặt chẽ với mức độ tuân thủ phòng ngừa nhiễm khuẩn và cảm nhận của bệnh nhân về sự an toàn [@dancer2009importance].
+
+Như vậy, từ kết quả khảo sát, có thể thấy rằng hệ thống thiết bị vệ sinh tại Bệnh viện 30-4 đang ở mức chưa đạt chuẩn. Các khu vực vệ sinh còn tồn tại nhiều vấn đề như hư hỏng, thiếu thiết bị tự động, nứt vỡ hoặc bẩn. Để nâng cao chất lượng phục vụ và đảm bảo môi trường bệnh viện an toàn, cần có chính sách đầu tư cải tạo đồng bộ hệ thống thiết bị vệ sinh, tăng cường kiểm tra định kỳ và huấn luyện nhân viên vệ sinh chuyên trách. Đồng thời, cần áp dụng công nghệ thông minh và thân thiện người dùng để đảm bảo hiệu quả sử dụng, tiết kiệm tài nguyên và nâng cao sự hài lòng của người bệnh.
+
+
+### Bàn luận về khía cạnh vật dụng trong nhà vệ sinh
+Khía cạnh vật dụng là một thành phần quan trọng trong việc đảm bảo sự tiện nghi, vệ sinh và an toàn cho người sử dụng nhà vệ sinh tại các cơ sở y tế. Kết quả khảo sát tại Bệnh viện 30-4 cho thấy sự phân bố không đồng đều trong mức độ hiện diện của các vật dụng cơ bản này.
+
+Cụ thể, tiêu chí xà phòng hoặc dung dịch rửa tay có tỷ lệ đạt chuẩn cao nhất, với 62,2% nhà vệ sinh được trang bị, phản ánh sự cải thiện rõ rệt về thực hành vệ sinh tay tại đơn vị. Đây là yếu tố quan trọng trong kiểm soát nhiễm khuẩn bệnh viện, đặc biệt trong bối cảnh dịch bệnh vẫn có nguy cơ bùng phát [@who_handhygiene_2009].
+
+Tiếp theo là gương soi (58,0%) và móc treo quần áo (56,9%), những tiện ích cơ bản giúp tăng tính thuận tiện và thoải mái cho người sử dụng, đặc biệt là nhân viên và người nhà chăm sóc bệnh nhân. Tuy nhiên, cả hai tiêu chí này vẫn chưa đạt mức bao phủ trên 60%, cho thấy còn không ít khu vực chưa được trang bị đầy đủ.
+
+Đáng chú ý, hai tiêu chí có tỷ lệ đạt thấp nhất là giấy vệ sinh và giá để bệnh phẩm (phân, nước tiểu), đều chỉ đạt 8,0%. Đây là con số rất thấp, đặc biệt đáng quan ngại trong bối cảnh bệnh viện có nhiều khu vực điều trị nội trú, cần được đảm bảo vệ sinh cá nhân và thu gom mẫu bệnh phẩm đúng quy cách. Việc thiếu giấy vệ sinh hoặc nơi để bệnh phẩm không chỉ gây bất tiện mà còn tiềm ẩn nguy cơ lây nhiễm chéo và ảnh hưởng đến hình ảnh bệnh viện [@nguyen2020vesinh, @trinh2018clnbv].
+
+Bên cạnh đó, thùng đựng chất thải có nắp đạt tỷ lệ 52,1%, tuy cao hơn mức trung bình nhưng vẫn chưa đáp ứng yêu cầu về quản lý chất thải y tế theo quy định hiện hành của Bộ Y tế [@mohtthcn2021].
+
+Từ kết quả trên, có thể thấy rằng dù một số vật dụng cơ bản đã được cải thiện, song hệ thống vật tư tại các nhà vệ sinh bệnh viện vẫn còn thiếu đồng bộ và chưa đạt mức tối ưu. Điều này phản ánh một phần thực trạng về đầu tư cơ sở hạ tầng nhà vệ sinh trong các cơ sở y tế cũ kỹ, như tại Bệnh viện 30-4 – nơi phần lớn công trình đã được xây dựng từ lâu, dù đã trải qua nhiều lần sửa chữa nhưng vẫn chưa khắc phục triệt để các bất cập hiện hữu [@tran2022ksvs].
+
+📌 Phòng Vật tư Thiết bị Y tế của Bệnh viện 30-4 cần xem xét nghiêm túc kết quả khảo sát này để lập kế hoạch mua sắm bổ sung các vật dụng thiết yếu như: giấy vệ sinh, giá để bệnh phẩm, xà phòng rửa tay và các thiết bị phục vụ kiểm soát nhiễm khuẩn. Việc đầu tư hợp lý không chỉ giúp nâng cao chất lượng phục vụ người bệnh mà còn góp phần cải thiện tiêu chí vệ sinh bệnh viện theo chuẩn kiểm định chất lượng của Bộ Y tế.
 
 ::: {custom-style="CAN GIUA DAM 14 ONE"}
 TÀI LIỆU THAM KHẢO

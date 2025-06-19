@@ -50,28 +50,34 @@ tbl_dk_chung <- df_dk_chung_long %>%
     `n_Không đạt` = "Số không đạt", `Ty_le_Không đạt` = "Tỷ lệ không đạt (%)",
     `n_Không rõ` = "Số không rõ", `Ty_le_Không rõ` = "Tỷ lệ không rõ (%)"
   ) %>%
+    set_table_properties(width = 1, layout = "autofit")
 
-  set_table_properties(width = 1, layout = "autofit")
-
-
-# 📈 Biểu đồ tỷ lệ đạt theo tiêu chí
 plot_dk_chung <- df_dk_chung_long %>%
-  filter(Dat == "Đạt") %>%
-  count(Tieu_chi) %>%
+  count(Tieu_chi, Dat) %>%
+  group_by(Tieu_chi) %>%
   mutate(Ty_le = round(100 * n / sum(n), 1)) %>%
+  ungroup() %>%
+  filter(Dat == "Đạt") %>%
   ggplot(aes(x = reorder(Tieu_chi, Ty_le), y = Ty_le)) +
   geom_col(fill = "#1f77b4") +
   coord_flip() +
-  geom_text(aes(label = paste0(Ty_le, "%")), hjust = -0.1, size = 4, family = "Times New Roman") +
-  labs(x = "Tiêu chí", y = "Tỷ lệ đạt (%)", title = "Tỷ lệ đạt các điều kiện chung") +
-  theme_minimal(base_family = "Times New Roman", base_size = 13) +
-  ylim(0, 105)
+  geom_text(aes(label = paste0(Ty_le, "%")), 
+            position = position_stack(vjust = 0.5),
+            size = 4, color = "white", family = "Times New Roman") +
+  labs(
+    x = "Tiêu chí",
+    y = "Tỷ lệ đạt (%)",
+    title = "Tỷ lệ đạt các điều kiện chung"
+  ) +
+  theme_minimal(base_family = "Times New Roman", base_size = 13)
 
 # 📝 Nhận xét tự động
 top_dieu_kien <- df_dk_chung_long %>%
-  filter(Dat == "Đạt") %>%
-  count(Tieu_chi) %>%
+  count(Tieu_chi, Dat) %>%
+  group_by(Tieu_chi) %>%
   mutate(Ty_le = round(100 * n / sum(n), 1)) %>%
+  ungroup() %>%
+  filter(Dat == "Đạt") %>%
   arrange(desc(Ty_le))
 
 nhan_xet_dieu_kien <- glue("
