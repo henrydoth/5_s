@@ -29,8 +29,8 @@ source(here::here("R", "packages.R"))
 source(here::here("R", "00_setup.R"))
 source(here::here("R", "01_load_data.R"))
 source(here::here("R", "so_lan_thuc_hien_ve_sinh_24_h.R"))
-
 source(here::here("R", "dieu_kien_chung.R"))
+source(here::here("R", "khia_canh_san_nha_ve_sinh.R"))
 ```
 
 
@@ -138,10 +138,59 @@ plot_vs_24h
 ##### `r nhan_xet_kt`
 
 
+## Điều kiên chung
+Nhân viên và Khách hàng
+### Bảng
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| paged-print: false
+#| 
+tbl_dk_chung
+```
+
+##### `r nhan_xet_dieu_kien`
+
+### Biểu đồ
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| paged-print: false
+plot_dk_chung
+```
+
+##### `r nhan_xet_dieu_kien`
+
+
+
+
+
+## Khía cạnh sàn nhà vệ sinh
 
 ### Bảng
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| paged-print: false
+#| 
+tbl_san_nvs
+```
 
 
+
+### Biểu đồ
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| paged-print: false
+plot_san_nvs
+```
+
+##### `r nhan_xet_san_nvs`
 
 
 
@@ -165,6 +214,17 @@ Tại Malaysia, nghiên cứu của Ramli và cộng sự tiến hành chấm đ
 Tuy nhiên, cần lưu ý rằng số lần vệ sinh chỉ là một thành phần nhỏ trong đánh giá chất lượng vệ sinh môi trường bệnh viện. Yếu tố thời điểm, mức độ bẩn, đánh giá cảm quan, mùi và phản hồi người dùng cũng cần được tích hợp vào hệ thống giám sát để có cái nhìn toàn diện. Một số mô hình bệnh viện hiện đại đã ứng dụng cảm biến hoặc mã QR để theo dõi thời gian và tần suất dọn dẹp theo thời gian thực, mở ra hướng đi mới cho cải tiến 5S gắn với chuyển đổi số.
 
 Tóm lại, kết quả khảo sát tại Bệnh viện 30-4 cho thấy việc thực thi vệ sinh nhà vệ sinh đã đạt mức độ đồng đều giữa các khu vực, phản ánh một bước tiến trong cải tiến chất lượng theo mô hình 5S. Tuy nhiên, để nâng cao hơn nữa hiệu quả, cần tích hợp thêm chỉ số đánh giá cảm quan, mức độ hài lòng người sử dụng, và công nghệ số để theo dõi tần suất vệ sinh một cách khách quan và liên tục.
+
+### Bàn luận về điều kiện chung
+Kết quả khảo sát các tiêu chí phục vụ nhân viên và khách hàng tại khu vực nhà vệ sinh trong bệnh viện cho thấy còn nhiều hạn chế, đặc biệt là về phương diện an toàn, tiếp cận và vệ sinh môi trường. Nghiên cứu được thực hiện tại Bệnh viện 30-4, một cơ sở có nhiều tòa nhà xây dựng từ lâu, hiện đang trong tình trạng xuống cấp trầm trọng, mặc dù đã được tiến hành nhiều đợt sửa chữa, cải tạo nhỏ lẻ. Đây là một yếu tố quan trọng ảnh hưởng trực tiếp đến việc đảm bảo cơ sở hạ tầng vệ sinh đạt chuẩn.
+
+Toàn bộ 11 tiêu chí khảo sát cho thấy chỉ một số ít đạt mức đáp ứng tương đối, trong khi nhiều tiêu chí thiết yếu lại có tỷ lệ không đạt rất cao. Tiêu chí 11 (chuông bấm hoặc điện thoại khẩn cấp) có tỷ lệ không đạt lên đến 97,9%, phản ánh rõ sự thiếu hụt nghiêm trọng về phương tiện đảm bảo an toàn cho người sử dụng — đặc biệt là bệnh nhân cao tuổi, khuyết tật hoặc người cần trợ giúp khẩn cấp. Bên cạnh đó, tay vịn hỗ trợ (89,9%), biển cảnh báo té ngã (89,9%) và checklist vệ sinh định kỳ (89,4%) cũng nằm trong nhóm tiêu chí có tỷ lệ không đạt rất cao, làm tăng nguy cơ tai nạn và giảm hiệu quả quản lý vệ sinh.
+
+Một số vấn đề phổ biến khác như mùi hôi, thiếu thông gió, hoặc thiếu hướng dẫn rửa tay vẫn tồn tại ở mức báo động, với tỷ lệ không đạt dao động từ 36–39%, phản ánh ảnh hưởng từ cơ sở hạ tầng cũ kỹ, thiết kế chưa tối ưu, và công tác vận hành chưa hiệu quả. Mặc dù vậy, cũng ghi nhận được một số tiêu chí có tỷ lệ đạt khá cao, trong đó nước sạch để rửa tay và dội bồn cầu (87,8%), đảm bảo ánh sáng (82,4%) và bảng hướng dẫn rửa tay (63,8%) là những điểm sáng cho thấy nỗ lực cải thiện điều kiện cơ bản đã đạt được kết quả nhất định.
+
+Kết quả này phù hợp với các nghiên cứu trước đây cho thấy tại các bệnh viện có thời gian hoạt động lâu năm, công tác quản lý vệ sinh thường gặp nhiều thách thức hơn so với các bệnh viện mới xây hoặc đã được cải tạo tổng thể gần đây [@truong2020hygiene]. Điều này đòi hỏi không chỉ cải thiện về hạ tầng mà còn cần một chiến lược quản lý tổng thể, có kế hoạch sửa chữa đồng bộ và đào tạo nhân viên định kỳ.
+
+Tóm lại, tình trạng nhà vệ sinh tại Bệnh viện 30-4 hiện nay phản ánh những bất cập hạ tầng điển hình của các cơ sở y tế cũ, đòi hỏi giải pháp toàn diện về kỹ thuật, tổ chức và tài chính để cải thiện môi trường chăm sóc sức khỏe, đảm bảo an toàn và sự hài lòng của người bệnh và nhân viên y tế.
 
 ::: {custom-style="CAN GIUA DAM 14 ONE"}
 TÀI LIỆU THAM KHẢO

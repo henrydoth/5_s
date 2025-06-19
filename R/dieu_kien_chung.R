@@ -38,17 +38,21 @@ tbl_dk_chung <- df_dk_chung_long %>%
   group_by(Tieu_chi) %>%
   mutate(Ty_le = round(100 * n / sum(n), 1)) %>%
   ungroup() %>%
-  pivot_wider(names_from = Dat, values_from = c(n, Ty_le), values_fill = 0) %>%
-  flextable() |>
+  pivot_wider(
+    names_from = Dat,
+    values_from = c(n, Ty_le),
+    values_fill = 0
+  ) %>%
+  flextable() %>%
   set_header_labels(
     Tieu_chi = "Tiêu chí",
     `n_Đạt` = "Số đạt", `Ty_le_Đạt` = "Tỷ lệ đạt (%)",
     `n_Không đạt` = "Số không đạt", `Ty_le_Không đạt` = "Tỷ lệ không đạt (%)",
     `n_Không rõ` = "Số không rõ", `Ty_le_Không rõ` = "Tỷ lệ không rõ (%)"
-  ) |>
-  fontsize(size = 13, part = "all") |>
-  font(fontname = "Times New Roman", part = "all") |>
-  autofit()
+  ) %>%
+
+  set_table_properties(width = 1, layout = "autofit")
+
 
 # 📈 Biểu đồ tỷ lệ đạt theo tiêu chí
 plot_dk_chung <- df_dk_chung_long %>%
