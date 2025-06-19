@@ -4,7 +4,7 @@ pacman::p_load(
   ggplot2, lubridate, glue, flextable,
   officer, officedown, jpeg, png, grid,
   tidyverse, magrittr,  
-  purrr, RColorBrewer, emo, janitor,
+  purrr, RColorBrewer, janitor,
   effectsize, patchwork, scales, stringr,
   tidytext  # ✅ Thêm dòng này
  
@@ -70,22 +70,3 @@ text_blue <- function(text) {
   )
 }
 
-# ✅ Hàm kiểm tra và nạp lại packages nếu cần
-check_and_load <- function() {
-  if (!exists("%>%") || !exists("theme_set", mode = "function")) {
-    message("📦 Nạp lại thư viện từ packages.R...")
-    source(here::here("R", "packages.R"))
-  }
-}
-
-# ✅ Hàm kiểm tra và nạp packages + dữ liệu nếu thiếu
-check_and_load_all <- function() {
-  if (!exists("%>%")) {
-    message("📦 Thiếu pipe (%>%) → nạp lại packages.R...")
-    source(here::here("R", "packages.R"))
-  }
-  if (!exists("df") || !inherits(df, "data.frame")) {
-    message("📂 Thiếu dữ liệu df → nạp lại 01_load_clean_data.R...")
-    source(here::here("R", "01_load_clean_data.R"))
-  }
-}

@@ -29,9 +29,8 @@ source(here::here("R", "packages.R"))
 source(here::here("R", "00_setup.R"))
 source(here::here("R", "01_load_data.R"))
 source(here::here("R", "so_lan_thuc_hien_ve_sinh_24_h.R"))
+
 source(here::here("R", "dieu_kien_chung.R"))
-
-
 ```
 
 
