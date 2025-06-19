@@ -1,0 +1,125 @@
+---
+title: "5s_benhvien304"
+author: "5s_team "
+format:
+    docx:
+      toc: false
+      number-sections: false
+      fig-dpi: 300          # optional for PNG fallback
+      dev: dml              # chèn ggplot dạng vector
+      reference-doc: "source/5s_template_words_input.docx"
+      fig-align: center
+      
+
+#bibliography: sstt_reference.bib
+bibliography: "source/5s.bib"
+csl: "source/ama-brackets.csl"
+lang: vi
+language:
+  labels:
+    fig: Hình
+editor: source
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+source(here::here("R", "packages.R"))
+source(here::here("R", "00_setup.R"))
+
+```
+
+
+::: {custom-style="CAN GIUA DAM 14 ONE"}
+LỜI NÓI ĐẦU
+:::
+`r ft_msg`
+
+`r ft_name`
+
+```{=openxml}
+<w:p><w:r><w:br/></w:r></w:p>
+```
+
+`r quote`
+
+```{=openxml}
+<w:p><w:r><w:br/></w:r></w:p>
+```
+TP Hồ Chí Minh: `r formatted_datetime`
+
+
+
+
+::: {custom-style="CAN GIUA DAM 14 ONE"}
+ĐẶT VẤN ĐỀ
+:::
+
+Nhà vệ sinh bệnh viện là không gian chức năng thiết yếu, ảnh hưởng trực tiếp đến sự hài lòng của người bệnh, nhân viên y tế và chất lượng chăm sóc y tế nói chung. Trong hệ thống tiêu chí chất lượng bệnh viện Việt Nam (Quyết định số 6858/QĐ-BYT, ngày 18/11/2016), tiêu chí về vệ sinh môi trường, đặc biệt là nhà vệ sinh, được đánh giá như một thành phần quan trọng trong kiểm soát nhiễm khuẩn và an toàn người bệnh.
+
+Tại Bệnh viện 30-4, thực trạng nhà vệ sinh vẫn còn nhiều hạn chế về điều kiện vật chất, mùi hôi, thiết bị vệ sinh và sự hài lòng của người sử dụng. Do đó, việc khảo sát thực trạng nhà vệ sinh và đề xuất giải pháp cải tiến là nhiệm vụ cấp thiết nhằm đảm bảo môi trường làm việc và điều trị sạch sẽ, an toàn, chuyên nghiệp.
+
+Mô hình 5S (Sàng lọc – Sắp xếp – Sạch sẽ – Săn sóc – Sẵn sàng), vốn được áp dụng hiệu quả trong cải tiến chất lượng và quản lý môi trường làm việc tại nhiều đơn vị y tế, là một hướng tiếp cận phù hợp để nâng cao chất lượng vệ sinh nhà vệ sinh bệnh viện. Việc kết hợp mô hình 5S với công cụ khảo sát số hóa, phân tích dữ liệu và báo cáo tự động sẽ góp phần hiện đại hóa quy trình quản lý vệ sinh môi trường.
+
+---
+
+::: {custom-style="CAN GIUA DAM 14 ONE"}
+MỤC TIÊU NGHIÊN CỨU
+:::
+
+### Mục tiêu tổng quát
+
+Ứng dụng mô hình 5S trong khảo sát, đánh giá và cải tiến chất lượng vệ sinh môi trường nhà vệ sinh tại Bệnh viện 30-4.
+
+### Mục tiêu cụ thể
+
+- Khảo sát thực trạng điều kiện vệ sinh nhà vệ sinh tại tất cả các khoa/phòng/trung tâm trong bệnh viện.
+- Phân tích các vấn đề tồn tại về biển báo, thông gió, sàn, thiết bị và vật dụng vệ sinh.
+- Đề xuất giải pháp cải tiến theo mô hình 5S phù hợp với điều kiện thực tế của bệnh viện.
+- Xây dựng báo cáo tự động và trực quan hóa dữ liệu khảo sát bằng R, Quarto và Shiny.
+
+
+# TỔNG QUAN TÀI LIỆU
+
+
+## Vai trò của nhà vệ sinh trong chất lượng bệnh viện
+
+Nhà vệ sinh bệnh viện không chỉ là không gian thiết yếu phục vụ nhu cầu sinh lý mà còn phản ánh môi trường chăm sóc toàn diện của cơ sở y tế. Nhiều nghiên cứu chỉ ra rằng mức độ sạch sẽ, an toàn và đầy đủ vật dụng trong nhà vệ sinh có ảnh hưởng trực tiếp đến sự hài lòng và tâm lý của người bệnh cũng như nhân viên y tế [@nguyen2020chatluong; @ngoc2021danhgia].
+
+Bộ Y tế Việt Nam đã chính thức ban hành Bộ tiêu chí chất lượng bệnh viện theo Quyết định số 6858/QĐ-BYT, trong đó tiêu chí A2.4 yêu cầu đánh giá nhà vệ sinh bệnh viện dựa trên các khía cạnh như vị trí, biển chỉ dẫn, mức độ sạch sẽ, tình trạng thiết bị và độ hài lòng của người sử dụng [@bo_yte2016tieuchibenhvien].
+
+
+### Mô hình 5S trong cải tiến môi trường y tế
+
+Mô hình 5S (Sàng lọc – Sắp xếp – Sạch sẽ – Săn sóc – Sẵn sàng) có nguồn gốc từ Nhật Bản, đã được áp dụng rộng rãi tại nhiều quốc gia như một công cụ cải tiến liên tục (Kaizen) trong quản lý chất lượng, đặc biệt là trong ngành y tế [@hoshino2020japanesekaizen]. Mô hình này giúp tổ chức lại không gian làm việc gọn gàng, nâng cao hiệu suất, cải thiện vệ sinh và giảm thiểu sai sót.
+
+Tại Việt Nam, mô hình 5S được đưa vào triển khai thí điểm ở nhiều bệnh viện và mang lại kết quả tích cực trong công tác kiểm soát nhiễm khuẩn, nâng cao chất lượng phục vụ và cải thiện môi trường bệnh viện [@le2018ungdung5s].
+
+
+
+### Ứng dụng công nghệ trong khảo sát và đánh giá chất lượng vệ sinh
+
+Với sự phát triển của công nghệ số, các công cụ khảo sát trực tuyến và phân tích dữ liệu như Google Forms, R, Shiny và Quarto đang được ứng dụng để thu thập, tổng hợp và trực quan hóa dữ liệu vệ sinh trong bệnh viện [@pham2023shiny]. Những công cụ này giúp tiết kiệm thời gian, tránh bỏ sót, đồng thời tăng tính khách quan trong đánh giá và đề xuất cải tiến.
+
+Nhiều mô hình nghiên cứu hành vi người dùng nhà vệ sinh cũng cho thấy việc cung cấp phản hồi trực tiếp và báo cáo tự động có thể làm tăng mức độ tuân thủ vệ sinh và ý thức giữ gìn môi trường chung [@sato2019toiletbehavior].
+
+
+
+
+# KẾT QUẢ NGHIÊN CỨU
+## 📋 Bảng tần suất từ
+### Bảng tần suất từ
+
+
+
+
+
+
+
+# BÀN LUẬN
+
+Trong nghiên cứu này, 
+::: {custom-style="CAN GIUA DAM 14 ONE"}
+TÀI LIỆU THAM KHẢO
+:::
