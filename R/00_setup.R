@@ -42,7 +42,7 @@ ft_msg <- ftext(
 )
 
 ft_name <- ftext(
-  "Đỗ Thanh Liêm",
+  "Nhóm 5S phòng KHTH",
   prop = fp_text(font.family = "Segoe Print", font.size = 16)
 )
 

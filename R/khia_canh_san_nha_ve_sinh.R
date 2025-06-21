@@ -62,7 +62,7 @@ plot_san_nvs <- df_san_nvs_long %>%
   labs(
     x = "Nội dung",
     y = "Tỷ lệ 'Có' (%)",
-    title = "Tỷ lệ đạt chuẩn sàn nhà vệ sinh"
+    title = "Đạt chuẩn sàn nhà vệ sinh"
   ) +
   theme_minimal(base_family = "Times New Roman", base_size = 13) +
   ylim(0, 105)

@@ -1,6 +1,6 @@
 ---
-title: "5s_benhvien304"
-author: "5s_team "
+title: "CẢI TIẾN CHẤT LƯỢNG NHÀ VỆ SINH BỆNH VIỆN 30-4"
+author: " PHÒNG KẾ HOẠCH TỔNG HỢP "
 format:
     docx:
       toc: false
@@ -29,6 +29,7 @@ source(here::here("R", "packages.R"))
 source(here::here("R", "00_setup.R"))
 source(here::here("R", "01_load_data.R"))
 source(here::here("R", "so_lan_thuc_hien_ve_sinh_24_h.R"))
+source(here::here("R", "khoa_phong_so_lan_thuc_hien_ve_sinh_24_h.R"))
 source(here::here("R", "dieu_kien_chung.R"))
 source(here::here("R", "khia_canh_san_nha_ve_sinh.R"))
 source(here::here("R", "khia_canh_thiet_bi_ve_sinh.R"))
@@ -113,28 +114,29 @@ Với sự phát triển của công nghệ số, các công cụ khảo sát tr
 Nhiều mô hình nghiên cứu hành vi người dùng nhà vệ sinh cũng cho thấy việc cung cấp phản hồi trực tiếp và báo cáo tự động có thể làm tăng mức độ tuân thủ vệ sinh và ý thức giữ gìn môi trường chung [@sato2019toiletbehavior].
 
 
+# ĐỐI TƯỢNG VÀ PHƯƠNG PHÁP NGHIÊN CỨU
 
-# CHƯƠNG 2  
-## ĐỐI TƯỢNG VÀ PHƯƠNG PHÁP NGHIÊN CỨU
+## Thiết kế nghiên cứu 
 
-### Thiết kế nghiên cứu  
 Đây là một nghiên cứu **mô tả cắt ngang**, được thực hiện nhằm khảo sát thực trạng và đánh giá mức độ đạt chuẩn của các điều kiện vệ sinh tại nhà vệ sinh trong khuôn viên Bệnh viện 30-4.
 
 ###  Địa điểm và thời gian nghiên cứu  
+
 - **Địa điểm**: Bệnh viện 30-4, TP. Hồ Chí Minh  
 - **Thời gian**: Từ tháng … đến tháng … năm 2025
 
-### Đối tượng nghiên cứu  
+## Đối tượng nghiên cứu  
 - Các **nhà vệ sinh** đang sử dụng tại các khoa phòng, khu hành chính và khu khám bệnh của Bệnh viện 30-4.  
 - **Đơn vị khảo sát** là **mỗi phòng vệ sinh**.
 
-### Tiêu chí chọn mẫu  
+## Tiêu chí chọn mẫu  
 - Bao gồm toàn bộ nhà vệ sinh đang hoạt động trong thời gian khảo sát tại bệnh viện.  
 - Không bao gồm các nhà vệ sinh đang sửa chữa hoặc ngưng sử dụng tại thời điểm khảo sát.
 
-### Cỡ mẫu và phương pháp chọn mẫu  
+## Cỡ mẫu và phương pháp chọn mẫu  
 - **Phương pháp chọn mẫu**: chọn mẫu toàn bộ (toàn bộ các nhà vệ sinh hợp lệ được khảo sát).  
-- **C**
+
+
 
 
 
@@ -164,6 +166,31 @@ plot_vs_24h
 
 ##### `r nhan_xet_kt`
 
+#### Biểu đồ top 7khoa phòng  số lần đi vệ sinh
+
+7 khoa phòng  số lần đi vệ sinh cao nhất
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| paged-print: false
+plot_top5_high 
+```
+
+##### `r nhan_xet_top5_high`
+
+7 khoa phòng  số lần đi vệ sinh thấp nhất
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| paged-print: false
+plot_top5_low 
+```
+
+##### `r nhan_xet_top5_low`
+
 
 ## Điều kiên chung
 Nhân viên và Khách hàng
@@ -189,6 +216,57 @@ plot_dk_chung
 ```
 
 ##### `r nhan_xet_dieu_kien`
+
+
+
+
+
+### Biểu đồ điều kiện high
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| paged-print: false
+plot_top5_dieu_kien_high
+```
+
+##### `r nhan_xet_top_dieu_kien_high`
+
+
+
+### Biểu đồ điều kiện low
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| paged-print: false
+plot_top5_dieu_kien_low
+```
+
+##### `r nhan_xet_top_dieu_kien_low`
+
+
+
+
+### Biểu đồ các khoa về bảng hướng dẫn rửa tay cao
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| paged-print: false
+plot_bang_huong_dan_rua_tay_high
+```
+
+### Biểu đồ các khoa về bảng hướng dẫn rửa tay thấp
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| paged-print: false
+plot_bang_huong_dan_rua_tay_low
+```
+
+##### `r nhan_xet_bang_hd`
 
 
 
@@ -269,6 +347,17 @@ plot_vat_dung
 
 
 
+## Khoa phòng 
+### Đặc điểm số lần đi vệ sinh 
+
+#### Bảng số lần đi vệ sinh theo khoa
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| paged-print: false
+tbl_vs_khoa 
+```
 
 
 
@@ -345,6 +434,45 @@ Bên cạnh đó, thùng đựng chất thải có nắp đạt tỷ lệ 52,1%,
 Từ kết quả trên, có thể thấy rằng dù một số vật dụng cơ bản đã được cải thiện, song hệ thống vật tư tại các nhà vệ sinh bệnh viện vẫn còn thiếu đồng bộ và chưa đạt mức tối ưu. Điều này phản ánh một phần thực trạng về đầu tư cơ sở hạ tầng nhà vệ sinh trong các cơ sở y tế cũ kỹ, như tại Bệnh viện 30-4 – nơi phần lớn công trình đã được xây dựng từ lâu, dù đã trải qua nhiều lần sửa chữa nhưng vẫn chưa khắc phục triệt để các bất cập hiện hữu [@tran2022ksvs].
 
 📌 Phòng Vật tư Thiết bị Y tế của Bệnh viện 30-4 cần xem xét nghiêm túc kết quả khảo sát này để lập kế hoạch mua sắm bổ sung các vật dụng thiết yếu như: giấy vệ sinh, giá để bệnh phẩm, xà phòng rửa tay và các thiết bị phục vụ kiểm soát nhiễm khuẩn. Việc đầu tư hợp lý không chỉ giúp nâng cao chất lượng phục vụ người bệnh mà còn góp phần cải thiện tiêu chí vệ sinh bệnh viện theo chuẩn kiểm định chất lượng của Bộ Y tế.
+
+# KẾT LUẬN
+
+
+Khảo sát thực trạng nhà vệ sinh tại Bệnh viện 30-4 cho thấy còn nhiều hạn chế đáng chú ý về cơ sở vật chất, thiết bị, vật dụng và biển hướng dẫn. Phần lớn các tiêu chí đánh giá đều có tỷ lệ không đạt cao, điển hình như: biển cảnh báo té ngã (chỉ đạt 10,1%), chuông báo sự cố (2,1%), bảng checklist vệ sinh (10,6%), giấy vệ sinh (8%), và giá để bệnh phẩm (8%). Đồng thời, nhiều thiết bị hư hỏng, nứt vỡ và tình trạng bẩn trong nhà vệ sinh vẫn còn phổ biến.
+
+Mặc dù bệnh viện đã có những cải tạo, nhưng do cơ sở hạ tầng xây dựng từ lâu và đã xuống cấp trầm trọng, các biện pháp hiện tại chưa đủ đáp ứng nhu cầu sử dụng thực tế của người bệnh và nhân viên y tế.
+
+Do đó, cần có sự quan tâm đặc biệt từ các cấp quản lý bệnh viện, nhất là Phòng Vật tư thiết bị y tế, để đầu tư nâng cấp, bảo trì định kỳ, đồng thời bổ sung các vật dụng thiết yếu. Việc cải thiện điều kiện nhà vệ sinh không chỉ nâng cao chất lượng môi trường bệnh viện mà còn góp phần cải thiện sự hài lòng và an toàn cho người bệnh.
+
+
+
+# ĐỀ XUẤT CẢI TIẾN
+
+Dựa trên kết quả khảo sát tại Bệnh viện 30-4 năm 2025, nhiều tiêu chí về điều kiện vệ sinh tại các phòng vệ sinh chưa đạt yêu cầu. Các vấn đề nổi bật bao gồm: tỷ lệ có vòi rửa tay tự động ngắt nước chỉ đạt 6,9%; tình trạng bồn cầu dính đọng phân, nước tiểu ở 72,9% nhà vệ sinh; chỉ 8% có giấy vệ sinh và giá để bệnh phẩm; và chỉ 27,1% đạt về vệ sinh bồn cầu. Điều này cho thấy cần có các biện pháp cải tiến cụ thể và kịp thời nhằm nâng cao chất lượng vệ sinh và sự hài lòng của người bệnh.
+
+1. Cải thiện trang thiết bị và vật dụng
+Bổ sung giấy vệ sinh, xà phòng rửa tay, móc treo đồ và gương soi cho các nhà vệ sinh chưa đạt chuẩn.
+
+Trang bị thêm thùng rác có nắp để đảm bảo phân loại và xử lý chất thải đúng cách.
+
+Lắp đặt vòi rửa tay tự động tại những nơi đông người nhằm giảm tiếp xúc tay và tiết kiệm nước.
+
+2. Bảo trì và nâng cấp định kỳ
+Sửa chữa hoặc thay thế các thiết bị hỏng, tắc nghẽn, đặc biệt là bồn cầu, vòi nước và hệ thống thoát nước.
+
+Vệ sinh thường xuyên để tránh tồn đọng phân và nước tiểu, cải thiện mùi và cảm giác sạch sẽ.
+
+3. Tăng cường thông tin và hướng dẫn sử dụng
+Lắp biển chỉ dẫn, hướng dẫn rửa tay, và bảng nội quy sử dụng nhà vệ sinh tại nơi dễ nhìn.
+
+Thiết kế checklist vệ sinh cho nhân viên nhằm đảm bảo công tác vệ sinh được thực hiện định kỳ và có theo dõi.
+
+4. Tăng cường giám sát và đầu tư từ phòng vật tư thiết bị y tế
+Phòng vật tư thiết bị y tế cần xây dựng kế hoạch đầu tư, duy tu và giám sát định kỳ hệ thống nhà vệ sinh.
+
+Cần có kinh phí riêng cho việc mua sắm thiết bị phù hợp như tay vịn, chuông báo sự cố, biển cảnh báo té ngã để nâng cao an toàn cho người sử dụng.
+
+
 
 ::: {custom-style="CAN GIUA DAM 14 ONE"}
 TÀI LIỆU THAM KHẢO
