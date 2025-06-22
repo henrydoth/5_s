@@ -1,6 +1,10 @@
 # 📦 Tải gói
 pacman::p_load(dplyr, tidyr, stringr, ggplot2, flextable, glue)
 
+
+
+## kết thúc chèn shiny
+
 # 📌 Danh sách 12 điều kiện chung
 cols_dk_chung <- c(
   "A. Điều kiện chung [1. Biển chỉ dẫn đến nhà vệ sinh]",
@@ -51,6 +55,8 @@ tbl_dk_chung <- df_dk_chung_long %>%
     `n_Không rõ` = "Số không rõ", `Ty_le_Không rõ` = "Tỷ lệ không rõ (%)"
   ) %>%
   set_table_properties(width = 1, layout = "autofit")
+
+
 
 # 📉 Tỷ lệ đạt các điều kiện
 plot_dk_chung <- df_dk_chung_long %>%

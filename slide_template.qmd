@@ -1,0 +1,266 @@
+---
+title: "slide_template"
+author: "henry"
+format: html
+editor: visual
+---
+
+## Tạo slide báo cáo
+
+```{r}
+my_pres  <- read_pptx("template.pptx") 
+```
+
+### Kiểm tra layout
+
+```{r}
+layout_summary(my_pres)
+
+glimpse(layout_summary(my_pres))
+```
+
+### Slide tiêu đề
+
+```{r}
+# Tạo slide tiêu đề
+my_pres <- add_slide(my_pres, layout = "Title Slide", master = "Office Theme")
+
+# Add the main title
+my_pres <- ph_with(my_pres, value = "Hiệu quả chẩn đoán và điều trị bộ test thần kinh nhận thức",
+                   location = ph_location_type(type = "ctrTitle"))
+
+# Add the subtitle
+my_pres <- ph_with(my_pres, value = "BS.CK2. Đỗ Thanh Liêm - Đơn vị trí nhớ và sa sút trí tuệ BV 30-4", location = ph_location_type(type = "subTitle"))
+
+```
+
+## Slide nội dung
+
+```{r}
+ul <- unordered_list(
+  level_list = c(1, 1, 1,1 ),
+  str_list = c("Đặt vấn đề", "Đối tượng và phương pháp nghiên cứu", "Kết quả - Bàn luận", "Kết luận"),
+  style = fp_text(color = "black", font.size = 0) )
+
+
+my_pres  <- add_slide(my_pres , layout = "Title and Content", master = "Office Theme")
+
+my_pres <- ph_with(my_pres, value = "Nội dung trình bày", location = ph_location_type(type = "title"))
+my_pres <- ph_with(x = my_pres, value = ul, 
+               location = ph_location_type(type = "body") )
+
+
+```
+
+## Slide nội dung
+
+```{r}
+ul <- unordered_list(
+  level_list = c(1, 2,  1, 2, 2),
+  str_list = c("Câu hỏi nghiên cứu", "Giá trí chẩn đoán và điều trị bộ test là gì?", "Mục tiêu", "Nghiên cứu mối tương quan của thang điểm MMSE với các test thần kinh nhận thức khác trong bộ Test thần kinh nhận thức tại Bệnh viện 30-4.", "Đánh giá hiệu quả ứng dụng của bộ Test thần kinh nhận thức trong chẩn đoán và điều trị Sa sút trí tuệ tại Bệnh viện 30-4"),
+  style = fp_text(color = "black", font.size = 0) )
+
+
+my_pres  <- add_slide(my_pres , layout = "Title and Content", master = "Office Theme")
+
+my_pres <- ph_with(my_pres, value = "Research Question and Objectives", location = ph_location_type(type = "title"))
+my_pres <- ph_with(x = my_pres, value = ul, 
+               location = ph_location_type(type = "body") )
+
+
+```
+
+### Next slide of title and content
+
+### Next slide of title and content 3
+
+```{r}
+# add slide
+my_pres  <- add_slide(my_pres , layout = "Title and Content", master = "Office Theme")
+# add title of slide
+my_pres <- ph_with(my_pres, value = "Objectives", location = ph_location_type(type = "title"))
+# add body of slide
+my_pres <- ph_with(my_pres, value = c("A novel model of resilience was tested in caregivers of people with mild-to-moderate dementia and was extended to explore whether including self-efficacy, optimism, and self-esteem improved its predictive value."), location = ph_location_type(type = "body"))
+# Add footer
+my_pres <- ph_with(my_pres, value = "https://doi.org/10.1186/s12877-023-04549-y", location = ph_location_type(type = "ftr"))
+# Add footer with date
+my_pres <- ph_with(my_pres, value = format(Sys.Date()), location = ph_location_type(type = "dt"))
+# Add infor to footer
+
+my_pres <- ph_with(my_pres, value = "slide thứ nhất", location = ph_location_type(type = "sldNum"))
+
+```
+
+## Slides Tiến độ lấy mẫu
+
+```{r}
+my_pres  <- add_slide(my_pres , layout = "Title and Content", master = "Office Theme")
+
+
+my_pres <- ph_with(my_pres, value = "Tiến độ lấy mẫu", location = ph_location_type(type = "title"))
+
+emp <- as.data.frame(df %>% count(year) %>%  mutate(percentage = round((n / sum(n)) * 100),  1))
+
+
+
+
+loc <- ph_location(
+  left=1.5,
+  top = 1.5,
+  width = 10,
+  height = 4,
+  rotation = 0,
+  bg="#333333"
+)
+
+my_pres  <- ph_with(my_pres , emp, location = loc)
+
+```
+
+## Add slide
+
+```{r}
+my_pres <- add_slide(my_pres, layout = 'Title and Content', master = 'Office Theme')
+
+my_pres <- ph_with(my_pres, value = "Sự thích nghi Resilient", location = ph_location_type(type = "title"))
+my_pres <- ph_with(my_pres, c(
+  "Tự động viên - self-appraisal",
+  "Sự chấp nhận Aceptance", 
+  "Hỗ trợ xã hội - Social support",
+  "Đời sống tâm linh- spirituality"
+    ), 
+          location = ph_location_type(type = "body") ) 
+```
+
+## Add more slide
+
+```{r}
+# add slide
+my_pres  <- add_slide(my_pres , layout = "Title and Content", master = "Office Theme")
+# add title of slide
+my_pres <- ph_with(my_pres, value = "Current study", location = ph_location_type(type = "title"))
+# add body of slide
+my_pres <- ph_with(my_pres, value = c("The present study found that there are factors relating to the caregiver and to the person with dementia that affect how resilient a dementia caregiver may be.", "It is apparent that caregiver resilience is not solely due to the personal assets and resources of the caregiver but may also be affected by the level of dependence of the person with dementia.",  "Findings suggest that caregivers with high levels of neuroticism and low subjective caregiver competence"), location = ph_location_type(type = "body"))
+```
+
+# add ggplot
+
+```{r}
+
+
+my_pres  <- add_slide(my_pres , layout = "Title and Content", master = "Office Theme")
+
+
+my_pres <- ph_with(my_pres, value = "cho ggplot vô body", location = ph_location_type(type = "title"))
+
+  
+my_pres <- ph_with(x = my_pres, tien_do_2024_thang_gp, 
+   location = ph_location_type(type = "body") )
+
+```
+
+# add table @schroeder_neuropsychological_2019
+
+```{r}
+my_pres <- add_slide(my_pres, layout = "Title and Content", master = "Office Theme") #them slides
+my_pres <- ph_with(my_pres, value = "Đặc điểm giới tính", location = ph_location_type(type = "title")) #them title
+
+# summary bang
+gender_summary <- df %>%
+  group_by(gender) %>%
+  summarise(
+    Count = n(),
+    Percentage = round((n() / nrow(df)) * 100, 1)
+  ) %>%
+  ungroup()
+
+# Create and format the flextable
+ft <- flextable(gender_summary) %>%
+  set_header_labels(gender = "Giới tính", Count = "n", Percentage = "%")  %>%
+  fontsize(size = 18, part = "header") %>% bold(bold = TRUE, part = "header") %>% bg( bg = "#D3D3D3", part = "header") %>%
+  fontsize(size = 18, part = "body") %>%   autofit()
+
+ft <- width(ft, width = 5, unit = "cm")
+
+# Get slide dimensions in inches
+slide_dims <- slide_size(my_pres)
+slide_width <- slide_dims$width
+slide_height <- slide_dims$height
+
+# Get flextable dimensions
+table_dims <- dim(ft)
+table_width <- sum(table_dims$widths)
+table_height <- sum(table_dims$heights)
+
+# Calculate positions to center the table
+left_pos <- (slide_width - table_width) / 2
+top_pos <- (slide_height - table_height) / 2
+
+
+# Add the flextable to the slide at the calculated position
+my_pres <- ph_with(my_pres, value = ft, location = ph_location(left = left_pos, top = top_pos))
+
+
+
+```
+
+# Thêm bảng 2 nội dung
+
+```{r}
+#| echo: true
+my_pres <- add_slide(my_pres, layout = "Two Content", master = "Office Theme") #them slides
+my_pres <- ph_with(my_pres, value = "Đặc điểm giới tính ", location = ph_location_type(type = "title")) #them title
+
+# summary bang
+gender_summary <- df %>%
+  group_by(gender) %>%
+  summarise(
+    Count = n(),
+    Percentage = round((n() / nrow(df)) * 100, 1)
+  ) %>%
+  ungroup()
+
+# Create and format the flextable
+ft <- flextable(gender_summary) %>%
+  set_header_labels(gender = "Giới tính", Count = "n", Percentage = "%")  %>%
+  fontsize(size = 16, part = "header") %>% bold(bold = TRUE, part = "header") %>% bg( bg = "#D3D3D3", part = "header") %>%
+  fontsize(size = 16, part = "body") %>%   autofit()
+
+ft <- width(ft, width = 3, unit = "cm")
+
+# Dat bieu do ben phai
+my_pres <- ph_with( my_pres,  value = gioi_tinh_gp
+,   location = ph_location_label(ph_label = "Content Placeholder 3"))
+
+
+# Dat bang ben T
+
+my_pres <- ph_with( my_pres,  value = ft,   location = ph_location_label(ph_label = "Content Placeholder 2"))
+
+
+
+
+```
+
+## bảng 2
+
+```{r}
+
+
+my_pres  <- add_slide(my_pres , layout = "Title and Content", master = "Office Theme")
+
+ 
+my_pres <- ph_with(my_pres, value = "Thêm bảng nữa", location = ph_location_type(type = "title"))
+
+ft <- flextable(head(mtcars))
+ft <- set_table_properties(ft, width = 1, layout = "autofit")
+
+my_pres <- ph_with(x = my_pres, ft,   location = ph_location_type(type = "body")  )
+
+```
+
+# Export to pptx file
+
+```{r}
+print(my_pres , "dtcs_sstt_quarto.pptx")
+```

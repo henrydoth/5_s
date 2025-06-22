@@ -1,4 +1,4 @@
----
+# ---
 title: "CẢI TIẾN CHẤT LƯỢNG NHÀ VỆ SINH BỆNH VIỆN 30-4"
 author: " PHÒNG KẾ HOẠCH TỔNG HỢP "
 format:
@@ -34,7 +34,7 @@ source(here::here("R", "dieu_kien_chung.R"))
 source(here::here("R", "khia_canh_san_nha_ve_sinh.R"))
 source(here::here("R", "khia_canh_thiet_bi_ve_sinh.R"))
 source(here::here("R", "khia_canh_vat_dung_trong_nha_ve_sinh.R"))
-
+source(here::here("R", "5s_slides.R"))
 ```
 
 
